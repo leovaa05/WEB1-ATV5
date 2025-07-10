@@ -97,11 +97,22 @@ const premiacoes = [
   "R$ 1.000.000"
 ];
 
+function embaralharArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+let perguntasEmbaralhadas = [];
+
 function DigitarNome() {
-  rl.question("Digite o seu nome: ", (nome) => {
+  rl.question("Qual é o seu nome? ", (nome) => {
     nomeJogador = nome;
     rodadaAtual = 0;
     premioFinal = "R$ 0";
+    perguntasEmbaralhadas = embaralharArray([...perguntas]); // embaralha perguntas
     console.log(`\nBem-vindo ao Show do Milhão, ${nomeJogador}!`);
     proximaRodada();
   });
@@ -112,7 +123,7 @@ function proximaRodada() {
     return finalizarJogo(true);
   }
 
-  const pergunta = perguntas[rodadaAtual % perguntas.length];
+  const pergunta = perguntasEmbaralhadas[rodadaAtual];
 
   console.log(`\nRodada ${rodadaAtual + 1}`);
   console.log(`Premiação: ${premiacoes[rodadaAtual]}`);
