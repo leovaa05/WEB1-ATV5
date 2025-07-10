@@ -36,6 +36,8 @@ R$ 1.000.000
 - npm install
 - npm start
 # Créditos:
+https://arthurporto.notion.site/07-Javascript-cb539285c3b9410485790ff0743095f0
+https://arthurporto.notion.site/07-Javascript-1-22906b94b9cb8036a2a5d5a0deddf8aa
 # Licença:
 MIT License
 
