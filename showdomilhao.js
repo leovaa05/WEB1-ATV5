@@ -108,12 +108,12 @@ function embaralharArray(array) {
 let perguntasEmbaralhadas = [];
 
 function DigitarNome() {
-  rl.question("Qual é o seu nome? ", (nome) => {
+  rl.question("Digite o seu nome: ", (nome) => {
     nomeJogador = nome;
     rodadaAtual = 0;
     premioFinal = "R$ 0";
     perguntasEmbaralhadas = embaralharArray([...perguntas]); // embaralha perguntas
-    console.log(`\nBem-vindo ao Show do Milhão, ${nomeJogador}!`);
+    console.log(`\n🎉Bem-vindo ao Show do Milhão, ${nomeJogador}!`);
     proximaRodada();
   });
 }
@@ -125,14 +125,14 @@ function proximaRodada() {
 
   const pergunta = perguntasEmbaralhadas[rodadaAtual];
 
-  console.log(`\nRodada ${rodadaAtual + 1}`);
-  console.log(`Premiação: ${premiacoes[rodadaAtual]}`);
-  console.log(`\n${pergunta.pergunta}`);
+  console.log(`\n🔹 Rodada ${rodadaAtual + 1}`);
+  console.log(`💰 Premiação: ${premiacoes[rodadaAtual]}`);
+  console.log(`\n❓ ${pergunta.pergunta}`);
   pergunta.alternativas.forEach((alt) => {
     console.log(alt);
   });
 
-  rl.question("\nDigite a sua resposta: ", (resposta) => {
+  rl.question("\n👤 Digite a sua resposta: ", (resposta) => {
     const respostaFormatada = resposta.trim().toUpperCase();
 
     if (respostaFormatada === pergunta.correta) {
@@ -150,19 +150,19 @@ function proximaRodada() {
 
 function finalizarJogo(venceu, respostaCorreta = null) {
   console.log("\nFim do jogo!");
-  console.log(`Jogador: ${nomeJogador}`);
-  console.log(`Rodadas concluídas: ${rodadaAtual}/7`);
+  console.log(`👤 Jogador: ${nomeJogador}`);
+  console.log(`🔹 Rodadas concluídas: ${rodadaAtual}/7`);
   if (!venceu && respostaCorreta) {
     console.log(`A resposta correta da última pergunta era: ${respostaCorreta}`);
   }
-  console.log(`Premiação final: ${premioFinal}`);
+  console.log(`💰 Premiação final: ${premioFinal}`);
 
   rl.question("\n🔁 Deseja jogar novamente? (s/n): ", (resposta) => {
     if (resposta.trim().toLowerCase() === "s") {
       console.log("\n🔄 Reiniciando o jogo...\n");
       perguntarNome();
     } else {
-      console.log("\nObrigado por jogar o Show do Milhão! Até a próxima!");
+      console.log("\nObrigado por jogar o Show do Milhão! Até a próxima!😁");
       rl.close();
     }
   });
