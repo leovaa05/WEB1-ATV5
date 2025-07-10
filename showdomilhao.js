@@ -135,7 +135,10 @@ function proximaRodada() {
   rl.question("\n👤 Digite a sua resposta: ", (resposta) => {
     const respostaFormatada = resposta.trim().toUpperCase();
 
-    if (respostaFormatada === pergunta.correta) {
+    if (respostaFormatada === "P") {
+      console.log(`\n🛑 Você decidiu parar e levar: ${premioFinal}`);
+      finalizarJogo(true);
+    } else if (respostaFormatada === pergunta.correta) {
       console.log("✅ Resposta correta!");
       premioFinal = premiacoes[rodadaAtual];
       rodadaAtual++;
@@ -160,7 +163,7 @@ function finalizarJogo(venceu, respostaCorreta = null) {
   rl.question("\n🔁 Deseja jogar novamente? (s/n): ", (resposta) => {
     if (resposta.trim().toLowerCase() === "s") {
       console.log("\n🔄 Reiniciando o jogo...\n");
-      perguntarNome();
+      DigitarNome();
     } else {
       console.log("\nObrigado por jogar o Show do Milhão! Até a próxima!😁");
       rl.close();
