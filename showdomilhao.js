@@ -5,5 +5,11 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-console.log("!!Bem-vindo ao Show do Milhão!!");
-rl.close();
+function NomeDoJogador() {
+  rl.question("Digite o seu nome: ", (nome) => {
+    console.log('!!Bem-vindo ao Show do Milhão, ${nome}!');
+    rl.close();
+  });
+}
+
+NomeDoJogador();
