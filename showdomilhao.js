@@ -9,8 +9,9 @@ let nomeJogador = "";
 
 const perguntas = [
   {
-    pergunta: "alguma coisa...?",
-    alternativas: ["A) a", "B) b", "C) c"]
+    pergunta: "1. Qual é o maior órgão do corpo humano?",
+    alternativas: ["A) Coração", "B) Fígado", "C) Pulmão", "D) Pele"],
+    correta: "D"
   }
 ];
 
@@ -25,12 +26,23 @@ function DigitarNome() {
 function mostrarPergunta() {
   const pergunta = perguntas[0];
 
-  console.log(`🔹 Pergunta: ${pergunta.pergunta}`);
+  console.log(`Pergunta: ${pergunta.pergunta}`);
   pergunta.alternativas.forEach((alt) => {
     console.log(alt);
   });
 
-  rl.close();
+  rl.question("\nDigite a resposta: ", (resposta) => {
+    const respostaFormatada = resposta.trim().toUpperCase();
+
+    if (respostaFormatada === pergunta.correta) {
+      console.log("✅ Resposta correta!");
+    } else {
+      console.log(`❌ Resposta errada! A correta era: ${pergunta.correta}`);
+    }
+
+    rl.close();
+  });
 }
 
 DigitarNome();
+
